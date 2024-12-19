@@ -1,0 +1,41 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  .card-img-top {
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
+  }
+</style>
+
+
+<div id="filters">
+  <div>
+    
+  </div>
+</div>
+
+
+
+<h3>All Listings</h3>
+<% for(let i = 0; i < allListings.length; i += 3) { %>
+  <div class="row">
+    <% for(let j = i; j < Math.min(i + 3, allListings.length); j++) { %>
+      <div class="col-md-4 mb-4">
+        <a href="/listings/<%= allListings[j]._id %>" class="listing-link">
+          <div class="card listing-card">
+            <img class="card-img-top" src="<%= allListings[j].image.url %>" alt="Listing Image">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Sainath</h5>
+              <p class="card-text">TAP for Additional content</p>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= allListings[j].title %></b><br>
+                &#8377; <%= allListings[j].price %> / night
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+<% } %>
